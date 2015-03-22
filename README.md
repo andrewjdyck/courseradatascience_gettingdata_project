@@ -18,7 +18,9 @@ The zip file from this website contains test and train datasets. The file run_an
 
 ## Codebook
 
-The tidy dataset contains the following features
+A copy of the original codebook is available in this repository under the name features_info.txt.
+
+The tidy dataset contains only the following features from the original dataset:
 
 - subject
 - activity
