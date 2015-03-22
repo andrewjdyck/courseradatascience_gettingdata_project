@@ -42,7 +42,7 @@ selected_feature <- rbind(featuremean, featurestd)
 # activities are labeled via a Factor variable
 tidy_data <- data[, selected_feature$id]
 names(tidy_data) <- selected_feature$feature
-tidy_data[, c('subject', 'activity')] <- data[, c('subject', 'activity')]
+tidy_data <- cbind(data[, c('subject', 'activity')], tidy_data)
 tidy_data$activity <- factor(tidy_data$activity, 
                              activities$id, 
                              labels=activities$activity)
@@ -50,5 +50,11 @@ tidy_data$activity <- factor(tidy_data$activity,
 # Output the tidy dataset to a text file
 write.table(tidy_data, 
             file=paste(project_dir, 'tidy_data.txt', sep=''),
+            row.name=FALSE,
+            quote=FALSE)
+
+# Output the selected Variable names
+write.table(paste('-', names(tidy_data)), 
+            file=paste(project_dir, 'codebook.txt', sep=''),
             row.name=FALSE,
             quote=FALSE)
