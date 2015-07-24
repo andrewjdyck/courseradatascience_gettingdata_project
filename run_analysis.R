@@ -41,6 +41,8 @@ tidy_data <- cbind(data[, c('subject', 'activity')], tidy_data)
 tidy_data$activity <- factor(tidy_data$activity, 
                              activities$id, 
                              labels=activities$activity)
+tidy_data <- aggregate(tidy_data[, 3:ncol(tidy_data)], by=list(tidy_data$subject, tidy_data$activity), FUN=mean, na.rm=TRUE)
+names(tidy_data)[1:2] <- c('Subject', 'Activity')
 
 # Output the tidy dataset to a text file
 write.table(tidy_data, 
