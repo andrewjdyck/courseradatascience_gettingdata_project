@@ -1,12 +1,7 @@
 
-# Set the working directory where the downloaded data is located
-# This folder contains data from the UCI Machine learning repository
+# This code is intended to be run from a working directory that includes the source data.
+# The source data is located at the following url:
 # http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
-setwd('~/Downloads/UCI HAR Dataset/')
-
-# The project directory is where R code is saved and the 
-# tidy dataset will be output
-project_dir <- '~/Documents/getting_data_project/'
 
 # Load the feature and activity definitions
 features <- read.table('./features.txt', col.names=c('id', 'feature'))
@@ -49,12 +44,12 @@ tidy_data$activity <- factor(tidy_data$activity,
 
 # Output the tidy dataset to a text file
 write.table(tidy_data, 
-            file=paste(project_dir, 'tidy_data.txt', sep=''),
+            file='./tidy_data.txt',
             row.name=FALSE,
             quote=FALSE)
 
 # Output the selected Variable names
 write.table(paste('-', names(tidy_data)), 
-            file=paste(project_dir, 'codebook.txt', sep=''),
+            file='./codebook.txt',
             row.name=FALSE,
             quote=FALSE)
