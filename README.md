@@ -11,16 +11,16 @@ http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartpho
 
 The zip file from this website contains test and train datasets. The file run_analysis.R in this repository does the following:
 
-- Merge the test and train datasets
-- Keep only features related to the mean and standard deviation of measures
-- Label activities with english description
-- Output a tidy dataset with descriptive field names to text file
+1. Merge the test and train datasets
+2. Keep only features related to the mean and standard deviation of measures
+3. Label activities with english description
+4. Output a tidy dataset with descriptive field names to text file
 
 ## Codebook
 
-A copy of the original codebook is available in this repository under the name features_info.txt.
+A copy of the original codebook is available in this repository under the name features_info.txt. Features beginning with the lowercase letter t (as in tBodyAcc-mean()-X) represent a measure of time. Features beginning with the lowercase letter f (as in fBodyAcc-mean()-X) represent a measure of frequency using a fast fourier transform.
 
-The tidy dataset contains only the following features from the original dataset:
+The tidy dataset contains only the following features (mean and standard devitation) from the original dataset:
 
 - subject
 - activity

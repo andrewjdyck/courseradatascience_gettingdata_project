@@ -3,6 +3,9 @@
 # The source data is located at the following url:
 # http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones
 
+#############
+# Section 1 #
+#############
 # Load the feature and activity definitions
 features <- read.table('./features.txt', col.names=c('id', 'feature'))
 activities <- read.table('./activity_labels.txt', col.names=c('id', 'activity'))
@@ -26,11 +29,17 @@ train$activity <- train_activities$activity
 data <- rbind(test, train)
 rm(test, train)
 
+#############
+# Section 2 #
+#############
 # Defines only the features that we will keep.
 # selected features are mean and standard defiation measures
 featuremean <- features[grep('mean()', features$feature),]
 featurestd <- features[grep('std()', features$feature), ]
 selected_feature <- rbind(featuremean, featurestd)
+
+#############
+# Section 3 #
 
 # Create a tidy dataset with only selected features
 # Names for the features are taken from the codebook
@@ -44,6 +53,9 @@ tidy_data$activity <- factor(tidy_data$activity,
 tidy_data <- aggregate(tidy_data[, 3:ncol(tidy_data)], by=list(tidy_data$subject, tidy_data$activity), FUN=mean, na.rm=TRUE)
 names(tidy_data)[1:2] <- c('Subject', 'Activity')
 
+#############
+# Section 4 #
+#############
 # Output the tidy dataset to a text file
 write.table(tidy_data, 
             file='./tidy_data.txt',
